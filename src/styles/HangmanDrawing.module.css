@@ -1,0 +1,36 @@
+.container {
+    position: relative;
+}
+
+
+.top_horizontal {
+    position: relative;
+    margin-left: 100px;
+    width: 150px;
+    height: 10px;
+    background-color: black;
+    margin-top: 100px;
+}
+
+.vertical_line {
+    margin-left: 100px;
+    height: 300px;
+    width: 10px;
+    background-color: black;
+}
+
+.base {
+    background-color: black;
+    width: 200px;
+    height: 10px;
+}
+
+.hanging_line {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: black;
+    width: 10px;
+    height: 50px;
+}
+
