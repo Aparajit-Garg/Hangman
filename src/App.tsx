@@ -20,8 +20,15 @@ function App() {
 		setGuessedLetters(prev => [...prev, key])
 	}, [guessedLetters])
 
+	// since there are 6 body parts we check with the number 6
+	const gameOver = incorrectLetters.length >= 6
+
+	const isWinner = wordToGuess.split("").every(letter => guessedLetters.includes(letter))
+
 	useEffect(() => {
 		const handler = (e: KeyboardEvent) => {
+			if (isWinner || gameOver) return
+			
 			const key = e.key;
 			if (!key.match(/^[a-z]$/)) return;
 			
@@ -38,11 +45,12 @@ function App() {
 	return (
 		<div className={classes.outer_container}>
 			<div className={classes.inner_container}>
-				Lose Win
+				{ isWinner && 'Winner! - Refresh to try again' }
+				{ gameOver && 'Lost! - Refresh to try again' }
 			</div>
 			<HangmanDrawing numberOfGuesses={incorrectLetters.length} />
 			<HangmanWord guessedLetters={guessedLetters} wordToGuess={wordToGuess} />
-			<HangmanKeyboard activeLetter={guessedLetters.filter(letter => wordToGuess.includes(letter))} inActiveLetters={incorrectLetters} addGuessedLetters={addGuessedLetter} />
+			<HangmanKeyboard activeLetter={guessedLetters.filter(letter => wordToGuess.includes(letter))} inActiveLetters={incorrectLetters} addGuessedLetters={addGuessedLetter} disabled={isWinner || gameOver} />
 		</div>
 	)
 }
