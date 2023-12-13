@@ -1,0 +1,15 @@
+
+.container {
+    margin: 2rem 0 2rem 0;
+    display: flex;
+    gap: 0.8rem;
+    font-weight: 600;
+    font-size: 4rem;
+    font-family: monospace;
+    text-transform: uppercase;
+}
+
+.letters {
+    border-bottom: 0.1em solid black;
+    text-transform: uppercase
+}
