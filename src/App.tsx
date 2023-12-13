@@ -28,7 +28,7 @@ function App() {
 	useEffect(() => {
 		const handler = (e: KeyboardEvent) => {
 			if (isWinner || gameOver) return
-			
+
 			const key = e.key;
 			if (!key.match(/^[a-z]$/)) return;
 			
@@ -49,7 +49,7 @@ function App() {
 				{ gameOver && 'Lost! - Refresh to try again' }
 			</div>
 			<HangmanDrawing numberOfGuesses={incorrectLetters.length} />
-			<HangmanWord guessedLetters={guessedLetters} wordToGuess={wordToGuess} />
+			<HangmanWord reveal={gameOver} guessedLetters={guessedLetters} wordToGuess={wordToGuess} />
 			<HangmanKeyboard activeLetter={guessedLetters.filter(letter => wordToGuess.includes(letter))} inActiveLetters={incorrectLetters} addGuessedLetters={addGuessedLetter} disabled={isWinner || gameOver} />
 		</div>
 	)
